@@ -12,6 +12,10 @@ function App() {
       return [{ id: Date.now(), ...todo }, ...prev];
     });
 
+    todos.map((tod) => {
+      console.log(tod.todoMsg);
+    })
+
 
   };
 
@@ -57,10 +61,12 @@ function App() {
             <TodoForm />
           </div>
           <div className="flex flex-wrap gap-y-3">
-            {todos.map((todo) => {
-              console.log(todo.todoMsg)
-              return <TodoItem key={todo.id} value={todo} />;
-            })}
+            {todos.map((todo) =>
+            (<div key={todo.id}>
+              <TodoItem todo={todo} />
+            </div>
+            )
+            )}
           </div>
         </div>
       </div>

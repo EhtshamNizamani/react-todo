@@ -8,7 +8,6 @@ function TodoForm() {
     const handleTodo = (e) => {
         e.preventDefault();
         if (!todo) return;
-        console.log("todo msg " + todo)
         addTodo({ todoMsg: todo, isCompleted: false });
         setTodo("")
     }
