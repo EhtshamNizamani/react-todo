@@ -6,19 +6,10 @@ import { TodoProvider } from "./components/TodoContext";
 function App() {
   const [todos, setTodo] = useState([]);
   const addTodo = (todo) => {
-
     setTodo((prev) => {
-
       return [{ id: Date.now(), ...todo }, ...prev];
     });
-
-    todos.map((tod) => {
-      console.log(tod.todoMsg);
-    })
-
-
   };
-
 
   const editTodo = (id, editedTodo) => {
     setTodo((prev) =>
@@ -26,27 +17,29 @@ function App() {
     );
   };
   const deleteTodo = (id) => {
-    setTodo((prev) => prev.filter((prevTodo) => prevTodo.id !== id))
+    setTodo((prev) => prev.filter((prevTodo) => prevTodo.id !== id));
   };
   const completeTodo = (id) => {
     setTodo((prev) =>
-      prev.map((prevTodo) => (prevTodo.id === id ? { ...prevTodo, isCompleted: !prevTodo.isCompleted } : prevTodo))
+      prev.map((prevTodo) =>
+        prevTodo.id === id
+          ? { ...prevTodo, isCompleted: !prevTodo.isCompleted }
+          : prevTodo
+      )
     );
   };
 
   useEffect(() => {
-    const todos = JSON.parse(localStorage.getItem('todos'));
+    const todos = JSON.parse(localStorage.getItem("todos"));
     if (todos) {
-      setTodo(todos)
+      setTodo(todos);
     }
   }, []);
 
   useEffect(() => {
     if (todos && todos.length > 0) {
-      localStorage.setItem('todos', JSON.stringify(todos));
-
+      localStorage.setItem("todos", JSON.stringify(todos));
     }
-
   }, [todos]);
   return (
     <TodoProvider
@@ -60,12 +53,11 @@ function App() {
           <div className="mb-4">
             <TodoForm />
           </div>
-          {todos.map((todo) =>
-          (<div key={todo.id}>
-            <TodoItem key={todo.id} todo={todo} />
-          </div>
-          )
-          )}
+          {todos.map((todo) => (
+            <div key={todo.id}>
+              <TodoItem key={todo.id} todo={todo} />
+            </div>
+          ))}
         </div>
       </div>
     </TodoProvider>

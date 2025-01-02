@@ -7,7 +7,6 @@ function TodoItem(props) {
         completeTodo } = useTodo();
 
     const onEditTodo = () => {
-        console.log("isEditable" + isEditable);
 
         if (todo === "") return
         editTodo(props.todo.id, { ...props.todo, todoMsg: todo })
@@ -16,7 +15,6 @@ function TodoItem(props) {
     }
 
     const OnDeleteTodo = () => {
-        console.log("props.todo.id" + props.todo.id);
 
         deleteTodo(props.todo.id);
     }
