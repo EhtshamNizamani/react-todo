@@ -60,14 +60,12 @@ function App() {
           <div className="mb-4">
             <TodoForm />
           </div>
-          <div className="flex flex-wrap gap-y-3">
-            {todos.map((todo) =>
-            (<div key={todo.id}>
-              <TodoItem todo={todo} />
-            </div>
-            )
-            )}
+          {todos.map((todo) =>
+          (<div key={todo.id}>
+            <TodoItem key={todo.id} todo={todo} />
           </div>
+          )
+          )}
         </div>
       </div>
     </TodoProvider>
